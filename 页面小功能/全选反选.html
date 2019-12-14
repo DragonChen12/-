@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table cellpadding="0" cellspacing="0" border="1">
+		<thead>
+			<th>
+				<input type="checkbox" id='allChecked'>全选
+			</th>
+			<th>商品</th>
+			<th>价格</th>
+		</thead>
+		<tbody id='inputBox'>
+			<tr>
+				<td>
+					<input type="checkbox">
+				</td>
+				<td>iphone7</td>
+				<td>7000</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox">
+				</td>
+				<td>iphone6</td>
+				<td>3000</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox">
+				</td>
+				<td>iphone5</td>
+				<td>2000</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox">
+				</td>
+				<td>iphone4</td>
+				<td>1000</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="反选" id="invertSelected">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+<script>
+	var allChecked = document.getElementById('allChecked'),
+		invertSelected = document.getElementById("invertSelected"),
+		inputBox = document.getElementById('inputBox'),
+		inputs = inputBox.getElementsByTagName('input');
+	//给全选框注册点击事件
+	allChecked.onclick = function () {
+		for(var i = 0; i < inputs.length; i++){
+			var input = inputs[i];
+			if(input.type !== "checkbox") continue;
+			input.checked = this.checked;
+		}
+	}
+	//遍历input数组，并注册点击事件
+	for(var i = 0; i < inputs.length; i++){
+		var input = inputs[i];
+		if(input.type !== 'checkbox') continue;
+		input.onclick = function () {
+			//遍历input数组，查看checked的值,处理全选子框有其一不选，全选框为false的方法一
+			var isAllChecked = true;
+			for(var i = 0; i < inputs.length; i++){
+				var input = inputs[i];
+				if(input.type !== "checkbox") continue;
+				if(!input.checked) isAllChecked = false;
+			}
+			allChecked.checked = isAllChecked;
+		}
+	}
+	//给反选框注册点击事件
+	invertSelected.onclick = function () {
+		//处理全选子框有其一不选，全选框为false的方法二
+		var isAllChecked = true;
+		for(var i = 0; i < inputs.length; i++){
+			var input = inputs[i];
+			if(input.type !== "checkbox") continue;
+			//子的反选
+			input.checked = !input.checked;
+			//父的反选
+			isAllChecked = isAllChecked & input.checked;
+		}
+		allChecked.checked = isAllChecked;
+	}
+</script>
+</html>

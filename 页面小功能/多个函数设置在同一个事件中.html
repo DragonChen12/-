@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn">
+	<script>
+		function addEvent(element,func) {
+			var oldclick = element.onclick;
+			if(typeof element.onclick !== 'function'){
+				element.onclick = func;
+			}else {
+				element.onclick = function () {
+					oldclick();
+					func();
+				}
+			}
+		}
+		var btn = document.getElementById('btn');
+		function a() {
+			alert('hello world!')
+		}
+		function b() {
+			alert('aaaa')
+		}
+		addEvent(btn,a);
+		addEvent(btn,b);
+	</script>
+</body>
+</html>

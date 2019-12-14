@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width: 100%;
+			min-width: 320px;
+			max-width: 640px;
+			margin: 0 auto;
+		}
+		.box {
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		ul {
+			width: 800%;
+			position: relative;
+			overflow:hidden;
+		}
+		li {
+			list-style: none;
+			width: 12.5%;
+			float: left;
+		}
+		img {
+			width: 100%;
+			height: 250px;
+			display: block;
+		}
+		.ccc {
+			width: 100%;
+			height: 300px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<ul>
+				<li><img src="timg (5).jpg"></li>
+				<li><img src="timg.jpg"></li>
+				<li><img src="timg (1).jpg"></li>
+				<li><img src="timg (2).jpg"></li>
+				<li><img src="timg (3).jpg"></li>
+				<li><img src="timg (4).jpg"></li>
+				<li><img src="timg (5).jpg"></li>
+				<li><img src="timg.jpg"></li>
+			</ul>
+		</div>
+	</div>
+	<div class='ccc'></div>
+	<script>
+	window.onload = function () {
+		var imgBox = document.querySelector('.box');
+		var ul = imgBox.querySelector('ul')
+		var lis = imgBox.querySelectorAll('ul li');
+		var index = 1;
+		var imgWidth = imgBox.offsetWidth;
+		for(var i = 0; i < lis.length; i++){
+			lis[i].style.width = imgWidth + 'px';
+		}
+		ul.style.width = lis.length * imgWidth + 'px';
+		ul.style.left = -imgWidth + 'px';
+
+		function windowResizeEvent (callback) {
+			window.onresize = function () {
+				var target = this;
+				if (target.resizeFlag) {
+					clearTimeout(target.resizeFlag);
+				}
+				target.resizeFlag = setTimeout(function () {
+					callback();
+					target.resizeFlag = null;
+				},100)
+			}
+		}
+		windowResizeEvent(function() {
+			imgWidth = imgBox.offsetWidth;
+			console.log(imgWidth)
+			ul.style.width = lis.length * imgWidth + 'px';
+			for(var i = 0; i < lis.length; i++) {
+				lis[i].style.width = imgWidth + 'px';
+			}
+			ul.style.left = -index * imgWidth + 'px';
+		});
+		// window.onresize = function () {
+		// 	imgWidth = imgBox.offsetWidth;
+		// 	ul.style.width = lis.length * imgWidth + 'px';
+		// 	for(var i = 0; i < lis.length; i++) {
+		// 		lis[i].style.width = imgWidth + 'px';
+		// 	}
+		// 	ul.style.left = -index * imgWidth + 'px';
+		// 	console.log('li'+lis[0].style.width)
+		// 	console.log('ul'+ul.style.width)
+		// }
+		var startTime = function () {
+			var timeId = setInterval(function() {
+			index++;
+			ul.style.transition = 'all 0.5s ease-in-out';
+			ul.style.left = (-index * imgWidth) + 'px';
+				setTimeout(function(){
+					if(index == lis.length - 1) {
+						index = 1;
+						ul.style.transition = 'none';
+						ul.style.left = (-index * imgWidth) + 'px';
+					}
+				},500)
+			},2000)
+		}
+		startTime();
+	}
+	</script>
+</body>
+</html>

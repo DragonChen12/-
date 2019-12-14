@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义复选框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            margin: 50px auto;
+            width: 500px;
+            height: 300px;
+        }
+
+        .tip {
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px dotted #666;
+        }
+
+        .container ul li {
+            padding-left: 25px;
+            float: left;
+            margin-right: 10px;
+            width: 60px;
+            height: 20px;
+            line-height: 20px;
+            background: url(./image/ckbg1.jpg) no-repeat;
+            box-sizing: border-box;
+        }
+
+        .container .check {
+            background: url(./image/ckbg2.jpg) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tip">你喜欢的水果</div>
+        <ul>
+            <li>苹果</li>
+            <li>梨子</li>
+            <li>香蕉</li>
+            <li>葡萄</li>
+            <li>西瓜</li>
+            <li>芒果</li>
+        </ul>
+    </div>
+    <script>
+        var oLis = document.querySelectorAll('.container ul li')
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function () {
+                //写法一
+                // if (!this.isCheck) {
+                //     this.className = 'check'
+                //     this.isCheck = true
+                // } else {
+                //     this.className = ''
+                //     this.isCheck = false
+                // }
+                
+                //写法二
+                this.classList.toggle('check')
+            }
+        }
+    </script>
+</body>
+
+</html>

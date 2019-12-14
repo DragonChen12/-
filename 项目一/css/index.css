@@ -1,0 +1,586 @@
+@charset "utf-8";
+.subject {
+    width: 100%;
+    height: auto;
+    overflow: hidden
+}
+
+.newdivs,
+.jsright,
+.jsright>div,
+.gjuls,
+.btgdhg,
+.grants,
+.div1,
+.div1>div,
+.fwsh {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.news1 {
+    background: url(../img/2.png) no-repeat center;
+}
+
+.news4 {
+    background: #f2f2f2;
+}
+
+.news2 {
+    background: url(../img/3.png) no-repeat bottom;
+}
+
+.juz {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+/*第一段*/
+
+.jss {
+    position: relative;
+    margin: 40px auto;
+}
+
+.jsleft {
+    position: absolute;
+    bottom: 10px;
+    left: 2.75%;
+    width: 23%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.jsleft img {
+    width: 100%;
+}
+
+.js1>p {
+    float: left;
+    width: 28.5%;
+    height: 72px;
+}
+
+.js1 h3 {
+    float: left;
+    width: 50%;
+    line-height: 72px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.js1 a {
+    float: right;
+    display: block;
+    line-height: 72px;
+    font-size: 16px;
+    color: #888;
+}
+
+.js2>p {
+    float: left;
+    width: 28.5%;
+    height: 100%;
+    background: #fff;
+}
+
+.jsright .js2 {
+    height: 360px;
+}
+
+.js2>div {
+    width: 71.5%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nrbtdiv {
+    float: right;
+    height: 100%;
+    background: url(../img/111.png) repeat
+}
+
+.nrbtdiv h3 {
+    border-left: 8px solid #ed4022;
+    line-height: 30px;
+    color: #ed4022;
+    font-size: 24px;
+    text-indent: 20px;
+    margin: 30px 0 15px 0;
+}
+
+.jsnr p {
+    line-height: 32px;
+    height: 64px;
+    font-size: 16px;
+    margin-left: 28px;
+}
+
+.jsnr img {
+    display: block;
+    margin: 20px auto 40px auto;
+}
+
+
+/*第2段*/
+
+.juz>h3 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 72px;
+    margin-top: 8px;
+}
+
+.juz>em {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: #120c6d;
+    margin: 0 auto;
+}
+
+.juz>p {
+    font-size: 16px;
+    line-height: 30px;
+    margin: 15px 0 20px 0;
+}
+
+.gjuls li {
+    float: left;
+    width: 31%;
+    height: auto;
+    overflow: hidden;
+}
+
+.gjli2 {
+    margin: 0 3.5%;
+}
+
+.gjuls li a {
+    display: block;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gjdiv1 {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.gjdiv1 img {
+    width: 100%;
+    height: 100%;
+    transition: all linear 0.3s
+}
+
+.gjdiv2 {
+    width: 90%;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    z-index: 3;
+    background: #f1f1f1;
+    opacity: 0.96;
+}
+
+.gjdiv2 h3 {
+    width: 95%;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #120c6d;
+    line-height: 30px;
+    border-left: 8px solid #120c6d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 20px;
+    text-indent: 8.5%;
+}
+
+.gjdiv2 p {
+    width: 85%;
+    margin: 15px 5% 25px 10%;
+    height: 78px;
+    line-height: 26px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+}
+
+.ljers {
+    width: 50%;
+    margin: 40px auto 20px auto;
+    height: 96px;
+    overflow: hidden;
+}
+
+.ljers a {
+    display: block;
+    width: 42%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 8px;
+    float: left;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    transition: all linear 0.3s;
+}
+
+.jzas1 {
+    background: #ed4022;
+    margin-left: 3%;
+    box-shadow: 0 4px 11px -2px #cf1f00;
+}
+
+.jzas2 {
+    background: #f9a533;
+    margin-left: 10%;
+    box-shadow: 0 4px 11px -2px #db7e00;
+}
+
+.btgdhg h3 {
+    float: left;
+    line-height: 56px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #000;
+}
+
+.btgdhg a {
+    display: block;
+    float: right;
+    line-height: 56px;
+    color: #888;
+    font-size: 16px;
+}
+
+.btgdhg p {
+    float: left;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.btgdhg em {
+    width: 40px;
+    height: 4px;
+    background: #120c6d;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.grants a {
+    display: block;
+    float: left;
+    width: 47.5%;
+    height: 190px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.zxjs1 {
+    width: 37.5%;
+    height: 160px;
+    overflow: hidden;
+}
+
+.zxjs1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.zxjs2 {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index: 5;
+    background: #fff;
+    opacity: 0.9;
+    width: 66.5%;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 1px #e1e1e1;
+    transition: all linear 0.3s
+}
+
+.zxjs2 h3 {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 10px 5%;
+    font-size: 16px;
+    color: #000;
+    transition: all linear 0.3s
+}
+
+.zxjs2 p {
+    width: 90%;
+    height: 48px;
+    line-height: 24px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    margin: 0 5%;
+    color: #888;
+    transition: all linear 0.3s
+}
+
+.zxjs2 div,
+.div1 a div {
+    background: url(../img/sj.png) no-repeat left center;
+    color: #ccc;
+    text-indent: 24px;
+    width: 90%;
+    line-height: 26px;
+    margin: 10px 5% 20px 5%;
+}
+
+.ast2,
+.ast4 {
+    margin-left: 5%;
+}
+
+
+/*第3段*/
+
+.txgy,
+.gjsy {
+    width: 48.6%;
+    height: auto;
+    overflow: hidden;
+}
+
+.div1>div {
+    background: #f2f2f2;
+    margin-bottom: 30px;
+    transition: all linear 0.3s
+}
+
+.div1 a {
+    display: block;
+    width: 92%;
+    margin: 20px 4%;
+    height: auto;
+    overflow: hidden;
+    background: url(../img/27.png) no-repeat right 158px;
+}
+
+.div1 h3 {
+    font-size: 16px;
+    color: #000;
+    line-height: 40px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all linear 0.3s
+}
+
+.div1 p {
+    width: 100%;
+    height: 96px;
+    line-height: 32px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    color: #666;
+    transition: all linear 0.3s
+}
+
+.div1 a div {
+    color: #ccc;
+    width: 100%;
+    margin: 9px auto 5px auto;
+}
+
+.fwsh a {
+    display: block;
+    float: left;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.view a {
+    width: 48.5%;
+    height: 220px;
+    margin-bottom: 30px;
+}
+
+.servicesh a {
+    width: 19%;
+    height: 208px;
+    margin-right: 1.25%;
+}
+
+.fwsh div {
+    width: 100%;
+    overflow: hidden;
+}
+
+.view div {
+    height: 190px;
+}
+
+.servicesh div {
+    height: 176px;
+}
+
+.fwsh p {
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    opacity: 0.9;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    transition: all linear 0.3s
+}
+
+.view p {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #F2F2F2;
+    left: 5%;
+}
+
+.servicesh p {
+    height: 52px;
+    left: 0;
+    background: #fff;
+    line-height: 52px;
+    text-indent: 1em;
+}
+
+.view .fwshas2,
+.view .fwshas4 {
+    margin-left: 3%;
+}
+
+.servicesh .fwshas5 {
+    margin-right: 0;
+}
+
+
+/*第4段*/
+
+.servicesh {
+    margin-bottom: 30px;
+}
+
+.news4 .juz {
+    margin-top: 15px;
+}
+
+.news3 .juz {
+    margin: 15px auto 10px auto;
+}
+
+.fwsh a div img {
+    transition: all linear 0.3s
+}
+
+.ljers a:hover {
+    transform: translateY(-5px);
+}
+
+.grants a:hover .zxjs2,
+.div1 div:hover,
+.fwsh a:hover>p {
+    background: #120c6d
+}
+
+.grants a:hover .zxjs2 p,
+.grants a:hover .zxjs2 h3,
+.grants a:hover .zxjs2 div,
+.div1 div:hover h3,
+.div1 div:hover p,
+.fwsh a:hover span {
+    color: #fff
+}
+
+.fwsh a:hover div img,
+.gjuls a:hover img {
+    transform: scale(1.1);
+}
+
+.mores:hover,
+.btgdhg a:hover {
+    color: #120c6d
+}
+
+.jsnr div div {
+    width: 100%;
+    height: 128px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+}
+
+@media only screen and (max-width:1400px) {
+    .juz {
+        width: 96%;
+        margin: 0 2%;
+    }
+    .jss {
+        margin: 30px 2%;
+    }
+}
+
+@media only screen and (max-width:1280px) {
+    .jsright .js2 {
+        height: 300px;
+    }
+    .nrbtdiv h3 {
+        margin: 10px 0
+    }
+    .jsnr div div p {
+        line-height: 22px !important;
+        font-size: 13px !important;
+        height: auto !important
+    }
+    .jsnr div div {
+        height: 88px !important
+    }
+}
+
+@media only screen and (max-width:1024px) {
+    .jsright .js2 {
+        height: 260px;
+    }
+}
+
+@media only screen and (max-width:540px) {
+    .jsleft {
+        height: 280px;
+    }
+    .js1>p {
+        display: none;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字大小缩放</title>
+    <style>
+        .add,
+        .sub {
+            float: left;
+            margin: 0 10px;
+            width:30px;
+            height: 30px;
+            background-color: #555;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .clearfix:before,.clearfix:after {
+            content: '';
+            display: table;
+        }
+        .clearfix:after {
+            clear:both;
+        }
+        .box {
+            width: 100%;
+        }
+        img {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class='clearfix'>
+        <div class='add'>+</div>
+        <div class='sub'>-</div>
+    </div>
+    <div class="box">
+        <p>
+            Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！
+        </p>
+        <img src="./image/timg0.jpeg">
+        <p>
+            Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！Toyo老师真帅，Toyo老师牛逼，潭州学院牛逼！
+        </p>
+        <img src="./image/timg1.jpg">
+    </div>
+    <script>
+        var oBox = document.querySelector('.box')
+        var oAdd = document.querySelector('.add')
+        var oSub = document.querySelector('.sub')
+        var vFontSize = parseInt(getComputedStyle(oBox)['font-size'])
+        oAdd.onclick = function () {
+            ++vFontSize > 25 && (vFontSize = 25)
+            oBox.style.fontSize = vFontSize + 'px'
+        }
+        oSub.onclick = function () {
+            --vFontSize < 12 && (vFontSize = 12)
+            oBox.style.fontSize = vFontSize + 'px'
+        }
+    </script>
+</body>
+</html>

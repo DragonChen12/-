@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 300px;
+            height: 240px;
+            border: 1px solid #eee;
+        }
+
+        .container .title {
+            width: 100%;
+            height: 31px;
+            background: url(./image/bg1.gif) no-repeat;
+        }
+
+        .container .title li {
+            float: left;
+            width: 94px;
+            height: 31px;
+            line-height: 31px;
+            font-size: 14px;
+            text-align: center;
+            background: url(./image/bg1.gif) no-repeat;
+        }
+
+        .container .title .active {
+            background: url(./image/bg2.gif) no-repeat;
+            color: #fff;
+        }
+
+        .content {
+            margin: 10px auto;
+            width: 270px;
+            height: 209px;
+            overflow: hidden;
+        }
+
+        .content ul li {
+            position: relative;
+            text-indent: 50px;
+            line-height: 39px;
+            font-size: 12px;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .container ul li span {
+            position: absolute;
+            left: 10px;
+            top: 12px;
+            width: 21px;
+            height: 15px;
+            color: #fff;
+            font-size: 12px;
+            line-height: 15px;
+            text-align: center;
+            background: url(./image/but.gif) no-repeat;
+            text-indent: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class='title'>
+            <li class='active'>热门排行</li>
+            <li>美图速递</li>
+            <li>社区Top</li>
+        </ul>
+        <div class="content">
+            <ul>
+                <li><span>1</span><a>产后妈妈分享：成功祛除妊娠纹经历</a></li>
+                <li><span>2</span><a>营养不足 你初老了吗</a></li>
+                <li><span>3</span><a>儿童淘气不要急 父母巧应对</a></li>
+                <li><span>4</span><a>孕妇产力不足 临产小诀窍</a></li>
+                <li><span>5</span><a>新生儿脸色发黄 注意补充营养</a></li>
+            </ul>
+            <ul>
+                <li><span>1</span><a>[重磅推荐]大量涉黄城所被清剿</a></li>
+                <li><span>2</span><a>[高清大图]胡兵复古大片激情四射</a></li>
+                <li><span>3</span><a>[活色生香]贝嫂内衣写真玉体横陈</a></li>
+                <li><span>4</span><a>[高清大图]倪妮表情鬼马俏皮可爱</a></li>
+                <li><span>5</span><a>[重磅推荐]选美文化 在繁华中落寞</a></li>
+            </ul>
+            <ul>
+                <li><span>1</span><a>能遇见你就是我最大的幸福</a></li>
+                <li><span>2</span><a>最伤身体的10个生活习惯，一定要避</a></li>
+                <li><span>3</span><a>儿童淘气不要急 父母巧应对</a></li>
+                <li><span>4</span><a>孕妇产力不足 临产小诀窍</a></li>
+                <li><span>5</span><a>新生儿脸色发黄 注意补充营养</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oTitles = document.querySelectorAll('.title li')
+        var oUls = document.querySelectorAll('.content ul')
+        for (var i = 0; i < oTitles.length; i++) {
+            oTitles[i].index = i
+            oTitles[i].onmouseenter = function () {
+                // 先把类名active全部移除（排他思想）
+                for (var j = 0; j < oTitles.length; j++) {
+                    oTitles[j].className = ''
+                }
+                this.className = 'active'
+                // 先把其他的ul都隐藏
+                for (var k = 0; k < oUls.length; k++) {
+                    oUls[k].style.display = 'none'
+                }
+                oUls[this.index].style.display = 'block'
+            }
+        }
+    </script>
+</body>
+
+</html>

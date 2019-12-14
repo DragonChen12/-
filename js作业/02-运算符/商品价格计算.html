@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品价格计算</title>
+    <style>
+        table {
+            width: 600px;
+            height: 200px;
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+        thead th {
+            height: 50px;
+            box-sizing: border-box;
+        }
+        tbody tr td {
+            width: 100px;
+            height: 150px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        tbody tr td:nth-of-type(3) {
+            width: 300px;
+        }
+        tbody>tr>td>img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        .subtract, .add {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            background-color: #777;
+            cursor: pointer;
+        }
+        .number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table border=1>
+        <thead>
+            <tr>
+                <th>图片</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="timg.jpg"></td>
+                <td>6</td>
+                <td><span class='subtract'>-</span><span class='number'>0</span><span class='add'>+</span></td>
+                <td class='price'>0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var subtract = document.querySelector('.subtract')
+        var add = document.querySelector('.add')
+        var numberBox = document.querySelector('.number')
+        var price = document.querySelector('.price')
+        var number = Number(numberBox.innerText)
+        subtract.onclick = function () {
+            number--
+            number <= 0 && (number = 0)
+            numberBox.innerText = number
+            price.innerText = number * 6
+        }
+        add.onclick = function () {
+            number++
+            numberBox.innerText = number
+            price.innerText = number * 6
+        }
+    </script>
+</body>
+
+</html>

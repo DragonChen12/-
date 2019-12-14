@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 50px;
+            background-color: #999;
+            margin: 50px auto;
+            line-height: 50px;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+        }
+        .box2 {
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #999;
+            margin: 50px auto;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class='box1'></div>
+    <div class='box2'></div>
+    <script>
+        var box1 = document.querySelector('.box1');
+        var box2 = document.querySelector('.box2');
+        box1.onmouseenter = function () {
+            box1.innerText = '';
+            box2.innerText = '移入了box1';
+        }
+        box2.onmouseenter = function () {
+            box2.innerText = '';
+            box1.innerText = '移入了box2';
+        }
+    </script>
+</body>
+</html>

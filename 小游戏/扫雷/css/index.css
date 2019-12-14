@@ -1,0 +1,51 @@
+.top {
+	position: relative;
+	width: 600px;
+	height: 30px;
+	margin: 100px auto 0;
+	background-color: #999;
+}
+.flagNum {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+}
+.flagNum img {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.restart {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+.time {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+}
+.time img {
+	float: left;
+
+}
+.clearFix:before,.clearFix:after {
+	content: "";
+	display: table;
+}
+.clearFix:after {
+	clear: both;
+}
+.map {
+	width: 600px;
+	height: 320px;
+	position: relative;
+	margin: 0 auto;
+	background-color: lightgray;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击切换按钮颜色</title>
+    <style>
+        #button {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid #ffd9ae;
+            cursor: pointer;
+        }
+        .yellow {
+            background-color: yellow;
+            color: #000;
+        }
+        .red {
+            background-color: red;
+            color: yellowgreen;
+        }
+        .purple {
+            background-color: purple;
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id='button' class='yellow'>按钮</div>
+    <script>
+        var button = document.getElementById('button')
+        var onoff = 1
+        button.onclick = function () {
+                onoff == 1 && button.classList.remove('yellow')
+                onoff == 1 && button.classList.add('red')
+                onoff == 2 && button.classList.remove('red')
+                onoff == 2 && button.classList.add('purple')
+                onoff == 3 && button.classList.remove('purple')
+                onoff == 3 && button.classList.add('yellow')
+                onoff++
+                onoff > 3 && (onoff = 1)
+        }
+    </script>
+</body>
+</html>

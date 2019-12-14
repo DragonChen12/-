@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.big-box {
+			margin: 50px;
+			width: 850px;
+			height: 500px;
+		}
+		.small {
+			position: relative;
+			float: left;
+			width: 250px;
+			height: 250px;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+		.big {
+			position: relative;
+			float: left;
+			width: 300px;
+			height: 300px;
+			overflow: hidden;
+		}
+		.big img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 600px;
+			height: 600px;
+		}
+		.slideChunk {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: rgba(190,190,190,0.7);
+		}
+	</style>
+</head>
+<body>
+	<div class="big-box">
+		<div class="small">
+			<img src="timg.jpg" alt="">
+			<div class="slideChunk"></div>
+		</div>
+		<div class="big">
+			<img src="timg.jpg" alt="">
+		</div>
+	</div>
+	<script>
+	var slideChunk = document.querySelector('.slideChunk');
+	var small = document.querySelector('.small');
+	var big = document.querySelector('.big');
+	var smallImg = small.children[0];
+	var bigImg = big.children[0];
+	var mouseX;
+	var mouseY;
+	var smallR = small.offsetWidth - slideChunk.offsetWidth;//右边缘,滑块水平最大移动距离
+	var smallB = small.offsetHeight - slideChunk.offsetHeight;//下边缘，滑块垂直水平最大移动距离
+	var imgMaxX = bigImg.offsetWidth - big.offsetWidth;//照片移动的最大距离
+	var imgMaxY = bigImg.offsetHeight - big.offsetHeight;
+	var imgX; //照片移动的距离
+	var imgY;
+	small.onmouseover = function (e) {//如果用onmouseover会触发事件冒泡，在ie上会有bug
+		slideChunk.style.display = 'block';
+		big.style.display = 'block';
+		mouseX = e.pageX - small.offsetLeft;//鼠标相对于盒子的位置
+		mouseY = e.pageY - small.offsetTop;
+		slideChunk.style.left = mouseX - slideChunk.offsetWidth / 2 + 'px';//设置滑块中心点的坐标等于鼠标相对于盒子位置-滑块自身宽(高)的一半
+		slideChunk.style.top = mouseY - slideChunk.offsetHeight / 2 + 'px';
+		if(slideChunk.offsetLeft >= smallR){//判断滑块的坐标是否超过small盒子的右边缘
+			slideChunk.style.left = smallR + 'px';
+		}
+		if(slideChunk.offsetLeft <= 0) {//判断滑块的坐标是否超过small盒子的左边缘
+			slideChunk.style.left = 0 + 'px';
+		}
+		if(slideChunk.offsetTop <= 0){//判断滑块的坐标是否超过small盒子的上边缘
+			slideChunk.style.top = 0 + 'px';
+		}
+		if(slideChunk.offsetTop >= smallB) {//判断滑块的坐标是否超过small盒子的下边缘
+			slideChunk.style.top = smallB + 'px';
+		}
+		imgX = slideChunk.offsetLeft / smallR * imgMaxX; //滑块移动距离与滑块移动最大距离之比等于照片移动距离与照片移动最大距离之比
+		imgY = slideChunk.offsetTop / smallB * imgMaxY;
+		bigImg.style.left = -imgX + 'px';
+		bigImg.style.top = -imgY + 'px';
+	}
+	small.onmouseout = function () {//如果用onmouseout会触发事件冒泡，会在ie有bug
+		slideChunk.style.display = 'none';
+		big.style.display = 'none';
+	}
+	</script>
+</body>
+</html>

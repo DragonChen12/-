@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		.box {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.box2 {
+			margin-top: 30px;
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="移动到800" id='btn1'>
+	<input type="button" value="移动到400" id='btn2'>
+	<div class="box"></div>
+	<div class="box2"></div>
+	<script>
+	var box = document.querySelector('.box');
+	var box2 = document.querySelector('.box2');
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	console.log(btn2)
+	btn1.onclick = function () {
+		animate(box,800);
+		animate(box2,800);
+	}
+	btn2.onclick = function () {
+		animate(box,400);
+		animate(box2,400);
+	}
+	function animate(element,target) {
+		if(element.timerId) {
+			clearInterval(element.timerId);
+			element.timerId = null;
+		}
+		var step = 10;
+		var time = 60;
+		var current = element.offsetLeft;
+		if(current > target) {
+			step = -Math.abs(step);
+		}
+		element.timerId = setInterval(function(){
+		 	step += step;
+		 	element.style.left = current + step + 'px';
+		 	if(Math.abs(current - target) < Math.abs(step)) {
+		 		element.style.left = target + 'px';
+		 		return;
+		 	}
+		},time)
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			position: relative;
+			margin: 50px;
+			width: 300px;
+			height: 500px;
+			overflow: hidden;
+			border: 1px solid red;
+		}
+		.content {
+			position: absolute;
+			left: 0;
+			padding-right: 20px;
+			width: 300px;
+			word-break: break-all;
+			box-sizing: border-box;
+		}
+		.scroll {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 20px;
+			height: 100%;
+			background-color: #ddd;
+		}
+		.bar {
+			position: absolute;
+			right: 0;
+			width: 20px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="content">
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我123
+		</div>
+		<div class="scroll">
+			<div class="bar"></div>
+		</div>
+	</div>
+	<script>
+	var box = document.querySelector('.box');
+	var content = document.querySelector('.content');
+	var scroll = document.querySelector('.scroll');
+	var bar = document.querySelector('.bar');
+	var boxHeight = box.clientHeight;
+	var contentHeight = content.offsetHeight;
+	var scrollHeight = scroll.offsetHeight;
+	var barHeight = boxHeight / contentHeight * scrollHeight;//父盒子的高度比上内容的高度等于滑块的高度比上滚动框的高度
+	bar.style.height = barHeight + 'px';
+	if(barHeight >= scrollHeight) {
+		bar.style.height = 0 + 'px';
+	}
+	bar.onmousedown = moveBar;
+	function moveBar(e) {
+		var mouseY = e.pageY - box.offsetTop - box.clientTop;
+		document.onmousemove = function (e) {
+			var y = e.pageY - mouseY;
+			bar.style.top = y + 'px';
+			content.style.top = - (y / scrollHeight * contentHeight) + 'px';//滑块滑动的量比上滚动框的高度度等于内容滑动量比上内容的高度
+			if(y >= scrollHeight - barHeight) {
+				bar.style.top = scrollHeight - barHeight + 'px';
+				content.style.top = - (contentHeight - boxHeight) + 'px';
+			}
+			if(y <= 0) {
+				bar.style.top = 0;
+				content.style.top = 0;
+			}
+		}
+	}
+	bar.onmouseup = function () {
+		bar.onmousedown = null;
+		document.onmousemove = null;
+		bar.onmousedown = moveBar;
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.12.2.js"></script>
+</head>
+<style>
+	div {
+		position: fixed;
+		left: calc(50% - 100px);
+		top: 300px;
+		width: 20px;
+		height: 20px;
+		margin: auto;
+		/*background-color: red;*/
+	}
+	div span:first-child {
+		position: absolute;
+		left: 1.4px;
+		top: -7px;
+		width: 10px;
+		height: 20px;
+		transform: rotate(-45deg);
+		background-color: pink;
+		border-top-left-radius: 62%;
+		border-top-right-radius: 70%;
+	}
+	div span:last-child {
+		position: absolute;
+		left: 50%;
+		top: -7px;
+		width: 10px;
+		height: 20px;
+		transform: translate(-1.4px) rotate(45deg);
+		background-color: pink;
+		border-top-left-radius: 70%;
+		border-top-right-radius: 62%;
+	}
+</style>
+<body>
+	<div>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+<script>
+	$(function(){
+		function move(left,top) {//动画函数
+			$('div').animate({
+				left: left+"px",
+				top: top+"px"
+			},10)
+		}
+		var step = 0;//步长
+		var x,y;
+		var halfScreen = window.screen.width / 2;
+		for(var i = 0; i < 1000; i++) {
+			step += 2 * Math.PI / 1000;
+			x = halfScreen - 100 * (2 * Math.sin(step) - Math.sin(2 * step));//心形曲线参数方程
+			y = Number($('div').css("top").replace('px','')) - 100 * (2 * Math.cos(step) - Math.cos(2 * step));
+			move(x,y);
+		}
+
+	})
+</script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .menu {
+            width: 160px;
+            margin: 0 auto;
+        }
+
+        .menu:first-child {
+            margin-top: 50px;
+        }
+
+        .menu p {
+            width: 100%;
+            background-color: skyblue;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .menu .active {
+            background: orange;
+        }
+
+        ul {
+            display: none;
+        }
+
+        ul li {
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <p>基本信息</p>
+        <ul>
+            <li>基本信息1111</li>
+            <li>基本信息2222</li>
+            <li>基本信息3333</li>
+        </ul>
+    </div>
+    <div class="menu">
+        <p>人员管理</p>
+        <ul>
+            <li>人员管理1111</li>
+            <li>人员管理2222</li>
+            <li>人员管理3333</li>
+        </ul>
+    </div>
+    <div class="menu">
+        <p>权限设置</p>
+        <ul>
+            <li>权限设置1111</li>
+            <li>权限设置2222</li>
+            <li>权限设置3333</li>
+        </ul>
+    </div>
+    <script>
+        var oMenus = document.querySelectorAll('.menu p')
+        var oUls = document.querySelectorAll('.menu ul')
+        for (var i = 0; i < oMenus.length; i++) {
+            oMenus[i].index = i
+            oMenus[i].onclick = function () {
+                if (!this.isOpened) {
+                    for (var i = 0; i < oMenus.length; i++) {
+                        oMenus.className = ''
+                    }
+                    this.className = 'active'
+                    for (var i = 0; i < oUls.length; i++) {
+                        oUls[i].style.diaplay = 'none'
+                    }
+                    oUls[this.index].style.display = 'block'
+                    this.isOpened = true
+                } else {
+                    this.className = ''
+                    oUls[this.index].style.display = 'none'
+                    this.isOpened = false
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
