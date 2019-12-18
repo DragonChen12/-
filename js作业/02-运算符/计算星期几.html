@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var vDays = prompt('请输入天数');
+        var arr = ['是星期二', '是星期三', '是星期四', '是星期五', '是星期六', '是星期日', '是星期一'];
+
+        function fnGetWeek() {
+            var vSurplus = vDays % 7;
+            switch (vSurplus) {
+                case 0:
+                    alert(arr[0]);
+                    break;
+                case 1:
+                    alert(arr[1]);
+                    break;
+                case 2:
+                    alert(arr[2]);
+                    break;
+                case 3:
+                    alert(arr[3]);
+                    break;
+                case 4:
+                    alert(arr[4]);
+                    break;
+                case 5:
+                    alert(arr[5]);
+                    break;
+                case 6:
+                    alert(arr[6])
+                    break;
+            }
+        }
+        fnGetWeek();
+    </script>
+</body>
+
+</html>
