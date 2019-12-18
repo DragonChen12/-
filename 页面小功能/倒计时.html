@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id='time' placeholder='请用-分隔输入时间年月日'>
+	<input type="button" id='btn' value='显示'>
+	<p id='tip'></p>
+	<script>	
+		var time = document.getElementById('time'),
+			btn = document.getElementById('btn'),
+			tip = document.getElementById('tip'),
+			checkTime = /^\d{4}-\d-\d{1,2}$/g;//月份为个位数,反之为两位数
+		time.onfocus = function () {
+			time.placeholder = '';
+		}
+		time.onblur = function () {
+			time.placeholder = '请用-分隔输入时间年月日';
+		}
+		btn.onclick = function () {
+			var timeData = time.value;
+			checkTime.lastIndex = 0;
+			var isSingleMonth = checkTime.test(timeData);
+			timeData = timeData.replace(/-/g,'');
+			var year = timeData.slice(0,4),
+				month,
+				date;
+			if(isSingleMonth) {
+				month = timeData.slice(4,5);
+			}else {
+				month = timeData.slice(4,6);
+			}
+			if(isSingleMonth) {
+				date = timeData.slice(5);
+			}else {
+				date = timeData.slice(6)
+			}
+			if(year < 1000 || month > 12 || date > 31) {
+				tip.innerHTML = '日期输入有误';
+				tip.style.color = 'red';
+				return;
+			}else {
+				tip.innerHTML = "";
+			}
+			function getInterval () {
+				var targetTime = new Date(year,month - 1,date),
+					originalTime = new Date(),
+					interval = targetTime - originalTime;
+					interval /= 1000;
+				var day = Math.round(interval / 60 / 60 / 24),
+					hour = Math.round(interval / 60 / 60 % 24),
+					minute = Math.round(interval / 60 % 60),
+					second = Math.round(interval % 60);
+				tip.innerText = day + '天' + hour + '小时' + minute + '分钟' + second + '秒';
+			}
+			setInterval(getInterval,1000);
+		}
+	</script>
+</body>
+</html>

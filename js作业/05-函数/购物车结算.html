@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft yahei", serif;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        table {
+            width: 1000px;
+            border-collapse: collapse;
+            border-color: #930;
+            margin: 50px auto 0;
+            user-select: none;
+        }
+        
+        table tr td {
+            width: 250px;
+            height: 100px;
+            text-align: center;
+        }
+        
+        table tr.title td {
+            height: 50px;
+            background: #c36;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        table tr td img {
+            display: block;
+            width: auto;
+            height: 70px;
+            margin: 0 auto;
+        }
+        
+        table tr td.number span {
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        table tr td.number span.down,
+        table tr td.number span.add {
+            width: 30px;
+            height: 30px;
+            background: #ddd;
+            line-height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        table tr td.number span.num {
+            width: 50px;
+            height: 28px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            line-height: 28px;
+            color: #c36;
+        }
+        
+        .box {
+            width: 1000px;
+            height: 50px;
+            background: #c36;
+            margin: 10px auto;
+        }
+        
+        .box p {
+            float: right;
+            width: 250px;
+            height: 50px;
+            line-height: 50px;
+            color: #fff;
+            font-size: 14px;
+        }
+        
+        .box p span {
+            color: #f4e5a9;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <thead></thead>
+        <tbody>
+            <tr class="title">
+                <td>商品</td>
+                <td>单价</td>
+                <td>数量</td>
+                <td>小计</td>
+            </tr>
+            <tr>
+                <td><img src="img/shop1.jpg" alt=""></td>
+                <td class="danjia">8</td>
+                <td class="number"><span class="down">-</span><span class="num">0</span><span class="add">+</span></td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td><img src="img/shop2.jpg" alt=""></td>
+                <td class="danjia">10</td>
+                <td class="number"><span class="down">-</span><span class="num">0</span><span class="add">+</span></td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td><img src="img/shop3.jpg" alt=""></td>
+                <td class="danjia">12.5</td>
+                <td class="number"><span class="down">-</span><span class="num">0</span><span class="add">+</span></td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td><img src="img/shop4.jpg" alt=""></td>
+                <td class="danjia">23</td>
+                <td class="number"><span class="down">-</span><span class="num">0</span><span class="add">+</span></td>
+                <td class="price">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="box">
+        <p class="totalPrice">合计费用： <span>0</span> ￥</p>
+        <p class="totalNum">已选中商品： <span>0</span> 个</p>
+    </div>
+    <script>
+        var oDanjia = document.querySelectorAll('.danjia')
+        var oNum = document.querySelectorAll('.num')
+        var oDown = document.querySelectorAll('.down')
+        var oAdd = document.querySelectorAll('.add')
+        var oPrice = document.querySelectorAll('.price')
+        var oTotalPrice = document.querySelector('.totalPrice span')
+        var oTotalNum = document.querySelector('.totalNum span')
+        for (var i = 0; i < oDown.length; i++) {
+            oDown[i].temIndex = i
+            oAdd[i].temIndex = i
+            oDown[i].onclick = function() {
+                var a = oNum[this.temIndex].innerText
+                a > 0 && a--
+                    fnSum(this.temIndex, a)
+            }
+            oAdd[i].onclick = function() {
+                var a
+                a = parseInt(oNum[this.temIndex].innerText)
+                fnSum(this.temIndex, ++a)
+            }
+        }
+
+        function fnSum(i, a) {
+            var vTotalNum = 0
+            var vTotalPrice = 0
+            oNum[i].innerText = a
+            oPrice[i].innerText = a * oDanjia[i].innerText
+            for (var j = 0; j < oNum.length; j++) {
+                vTotalNum += +oNum[j].innerText
+            }
+            for (var j = 0; j < oPrice.length; j++) {
+                vTotalPrice += +oPrice[j].innerText
+            }
+            oTotalNum.innerText = vTotalNum
+            oTotalPrice.innerText = vTotalPrice
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container {
+			position:relative;
+			width: 700px;
+			height: 500px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.banner {
+			position: relative;
+			width:700px;
+			height: 500px;
+			margin: 0 auto;
+		}
+		.banner img {
+			position: absolute;
+			opacity: 0;
+			width: 700px;
+			height: 500px;
+			transition: 0.8s;
+		}
+		.banner .on{
+			opacity: 1;
+		} 
+		.btn-left img {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translate(0,-50%);
+			width: 70px;
+			height: 70px;
+			cursor: pointer;
+		}
+		.btn-right img {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translate(0,-50%);
+			width: 70px;
+			height: 70px;
+			cursor: pointer;
+		}
+		ul{
+			list-style: none;
+		}
+		ul {
+			position: absolute;
+			bottom: 0px;
+			left: 50%;
+			transform: translate(-50%);
+
+		}
+		ul li{
+			float:left;
+			margin: 0 3px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: #ccc;
+			cursor: pointer;
+		}
+		ul .on{
+			background-color: #f70;
+		} 
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="banner">
+			<img  class="on" src="timg0.jpg" alt="">
+			<img src="timg2.jpg" alt="">
+			<img src="timg3.jpg" alt="">
+			<img src="timg4.jpg" alt="">
+			<img src="timg5.jpg" alt="">
+			<img src="timg6.jpg" alt="">
+		</div>
+		<div class="btn-left"><img src="left.png"></div>
+		<div class="btn-right"><img src="right.png"></div>
+		<ul class="btn">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script>
+	var oBtnRight = document.querySelector(".btn-right img"),//H5新增选择器
+		aImages = document.querySelectorAll(".banner img"),
+		oBtnLeft = document.querySelector(".btn-left img"),
+		aTabs = document.querySelectorAll("ul li"),
+		int,
+		index=0/*下标*/,lastIndex=0;/*上一次图片的下标*/
+		restart();
+		oBtnRight.onclick = function (){//点击事件->执行函数
+			change(function(){
+				stop();
+				index++;//index+=1；index=index+1；
+				index %= aImages.length;
+				restart();
+			})
+			
+		}
+		oBtnLeft.onclick = function (){//点击事件->执行函数
+			change(function(){
+				stop();
+				index--;//index-=1；index=index-1；
+				if(index < 0){
+				index = aImages.length - 1;
+				restart();
+				}
+			})
+		}
+		function change(callback){
+			//清除上一次的样式
+			aImages[lastIndex].className ="";//改变类名
+			aTabs[lastIndex].className = "";//改变类名
+			//调用传回来的函数
+			callback&&callback();
+			//设置当前样式
+			aImages[index].className = "on";//改变类名
+			aTabs[index].className = "on";//改变类名
+			lastIndex = index;//保存上一次下标
+		}
+		for(var i=0; i<=aTabs.length-1;i++){
+			(function(j){//闭包函数
+				aTabs[j].onclick=function(){
+					stop();
+					change(function(){
+						index = j;
+						restart();
+					})
+				}
+			})(i);//这是循环中的i，被作为参数传入
+		}
+		function stop (){
+			clearInterval(int);
+			console.log("stop!")
+		}
+		function restart(){
+			int = setInterval(function slideShow(){
+				change(function(){
+					index++;
+					index%=aImages.length;
+				})
+				console.log("restart!");
+			},1500)
+		}
+	</script>
+</body>
+</html>

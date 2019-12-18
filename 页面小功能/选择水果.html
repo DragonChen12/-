@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	select {
+		width: 200px;
+		height: 300px;
+		vertical-align: top;
+	}
+	input {
+		vertical-align: bottom;
+	}
+</style>
+<body>
+	<select name="" id="all" multiple="multiple">
+		<option value="苹果">苹果</option>
+		<option value="梨">梨</option>
+		<option value="香蕉">香蕉</option>
+		<option value="西瓜">西瓜</option>
+		<option value="哈密瓜">哈密瓜</option>
+	</select>
+	<input type="button" value=">>" id="btn1">
+	<input type="button" value="<<" id="btn2">
+	<input type="button" value=">" id="btn3">
+	<input type="button" value="<" id="btn4">
+	<select name="" id="all2" multiple="multiple"></select>
+</body>
+	<script>
+	var all = document.getElementById('all');
+	var all2 = document.getElementById('all2');
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var btn3 = document.getElementById('btn3');
+	var btn4 = document.getElementById('btn4');
+	btn1.onclick = function () {
+		for(var i = all.children.length - 1; i >= 0; i--){
+			var option = all.children[0];
+			all2.appendChild(option);
+		}
+	}
+	btn2.onclick = function () {
+		for(var i = all2.children.length - 1; i >= 0; i--){
+			var option = all2.children[0];
+			all.appendChild(option);
+		}
+	}
+	btn3.onclick = function () {
+		var arr = [];
+		for(var i = 0; i < all.children.length; i++){
+			var option = all.children[i];
+			if(option.selected) {
+				arr.push(option);
+				option.selected = false;
+			} 
+		}
+		for(var i = 0; i < arr.length; i++){
+			all2.appendChild(arr[i]);
+		}
+	}
+	</script>
+</html>

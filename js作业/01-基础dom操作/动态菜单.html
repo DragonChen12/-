@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+        }
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 70px;
+            height: 70px;
+            background-color: gold;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        .container>ul>li {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: skyblue;
+            text-align: center;
+            line-height: 80px;
+            transition: all 0.4s;
+            transform: scale(0);
+            list-style: none;
+            cursor: pointer;
+        }
+        .container>ul>li:nth-child(1) {
+            left: 0;
+        }
+        .container>ul>li:nth-child(2) {
+            right: 0;
+        }
+        .container>ul>li:nth-child(3) {
+            left: 0;
+            bottom: 0;
+        }
+        .container>ul>li:nth-child(4) {
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class="menu">菜单</div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script>
+        var menu = document.querySelector('.container>.menu');
+        var li = document.querySelectorAll('.container>ul>li');
+        menu.onclick = function () {
+            li[0].style.transform = 'scale(1)';
+            li[1].style.transform = 'scale(1)';
+            li[2].style.transform = 'scale(1)';
+            li[3].style.transform = 'scale(1)';
+            menu.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft yahei, serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box ul li {
+            height: 50px;
+            padding-left: 50px;
+            line-height: 50px;
+            font-size: 12px;
+            border-bottom: 1px solid red;
+        }
+
+        #box ul li span {
+            float: left;
+        }
+
+        #box ul li input {
+            display: none;
+            float: left;
+            margin-top: 14px;
+            color: #999;
+        }
+
+        #box ul li p {
+            float: left;
+            width: 50px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            margin-top: 12px;
+            margin-left: 10px;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var oSpans = document.querySelectorAll('#box ul li span')
+        var oInputs = document.querySelectorAll('#box ul li input')
+        var oPs = document.querySelectorAll('#box ul li p')
+        for (var i = 0; i < oPs.length; i++) {
+            (function (i) {
+                oPs[i].onclick = function () {
+                    if (!oPs[i].isClick) {
+                        oSpans[i].style.display = 'none'
+                        oInputs[i].style.display = 'block'
+                        oPs[i].isClick = true
+                    }else {
+                        oSpans[i].style.display = 'block'
+                        oInputs[i].style.display = 'none'
+                        oSpans[i].innerText = oInputs[i].value
+                        oPs[i].isClick = false
+                    }
+                }
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

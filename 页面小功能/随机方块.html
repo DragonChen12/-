@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		.container {
+			position: relative;
+			width: 800px;
+			height: 600px;
+			background-color: lightgray;
+		}
+		.container div {
+			position: absolute;
+		}
+	</style>
+<body>
+	<div class="container">
+		
+	</div>
+	<script>
+	var container = document.querySelector('.container');
+	var Tools = {
+		getRandom : function (min,max) {
+			// min = Math.floor(min);
+			// max = Math.floor(max);
+			return Math.floor((Math.random() * max - min + 1) + min);
+		}
+	}
+	function RandomBox(parent,option) {
+		option = option || {};
+		this.width= option.width || 20;
+		this.height= option.height || 20;
+		this.x=option.x || 0;
+		this.y= option.y || 0;
+		this.backgroundColor= option.backgroundColor || 'rgb(' + Tools.getRandom(0,255) + ',' + Tools.getRandom(0,255) + ',' + Tools.getRandom(0,255) + ')';
+		this.createElement = createElement;
+		this.div = document.createElement('div');
+		parent.appendChild(this.div);
+		this.parent = parent;
+		function createElement() {
+			this.div.style.width = this.width + 'px';
+			this.div.style.height = this.height + 'px';
+			this.div.style.left = this.x + 'px';
+			this.div.style.top = this.y + 'px';
+			this.div.style.backgroundColor = this.backgroundColor;
+			// setTimeout(function () {
+			// 	parent.innerHTML = '';
+			// },3000)
+		}
+		this.createElement();
+	}
+	RandomBox.prototype.random = function () {
+		var x = Tools.getRandom(0, this.parent.offsetWidth / this.width - 1) * this.width;
+		var y = Tools.getRandom(0, this.parent.offsetHeight / this.height - 1) * this.height;
+		this.div.style.left = x + 'px';
+		this.div.style.top = y + 'px';
+	}
+	var arr = [];
+	for(var i = 0; i < 10; i++) {
+		var box = new RandomBox(container);
+		arr.push(box);
+	}
+	setInterval(run,1000);
+	run();
+	function run() {
+		for(var i = 0; i < arr.length; i++) {
+			arr[i].random();
+		}
+	}
+	</script>
+</body>
+</html>

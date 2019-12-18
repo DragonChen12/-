@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左边隐藏导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            position: fixed;
+            left: -70px;
+            top: 0;
+            width: 70px;
+            height: 100vh;
+            background-color: #999;
+            transition: all 0.5s;
+        }
+        .container ul {
+            width: 100%;
+        }
+        .container ul li {
+            margin: 30px 0;
+            width: 100%;
+            text-align: center;
+        }
+        .container ul li img {
+            width: 50px;
+        }
+        .btn {
+            position: fixed;
+            left: 0;
+            bottom: 100px;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            background-color: #fff;
+            color: #999;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li><img src="../image/01.svg"></li>
+            <li><img src="../image/03.svg"></li>
+            <li><img src="../image/04.svg"></li>
+            <li><img src="../image/06.svg"></li>
+        </ul>
+    </div>
+    <div class="btn">></div>
+    <script>
+        var oBtn = document.querySelector('.btn')
+        var oContainer = document.querySelector('.container')
+        var i = 0
+        oBtn.onclick = function () {
+            i++
+            if(i % 2 == 1) {
+                oBtn.innerText = '<'
+                oContainer.style.left = 0 + 'px'
+            }else if(i % 2 == 0) {
+                oBtn.innerText = '>'
+                oContainer.style.left = -70 + 'px'
+            }
+        }
+    </script>
+</body>
+</html>

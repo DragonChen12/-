@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft yahei, serif;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        #box {
+            width: 310px;
+            height: 75px;
+            margin: 30px auto;
+            font-size: 12px;
+            line-height: 75px;
+        }
+        
+        #box span {
+            float: left;
+            color: red;
+        }
+        
+        #box ul {
+            float: left;
+            width: 100px;
+            height: 20px;
+            margin-top: 27px;
+        }
+        
+        #box ul li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: url("img/star.png");
+            cursor: pointer;
+        }
+        /* 添加类名 on 变为黄星 */
+        
+        #box ul li.on {
+            background-position: 0px -27px;
+        }
+        
+        #box p {
+            float: right;
+            width: 120px;
+            height: 70px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span>星级评分：</span>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p>提示：请认真给当前文章打分</p>
+    </div>
+    <script>
+        var oLis = document.querySelectorAll('#box li')
+        var oP = document.querySelector('p')
+        var aText = ['提示：请认真给当前文章打分', '很差', '较差', '还行', '推荐', '力荐']
+        var vIndex = -1
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].temIndex = i
+            oLis[i].onmouseenter = function() {
+                fnInStar(this.temIndex)
+            }
+            oLis[i].onmouseleave = function() {
+                fnInStar(vIndex)
+            }
+            oLis[i].onclick = function() {
+                vIndex = this.temIndex
+            }
+
+            function fnInStar(a) {
+                for (var k = 0; k < oLis.length; k++) {
+                    oLis[k].classList.remove('on')
+                }
+                for (var j = 0; j <= a; j++) {
+                    oLis[j].classList.add('on')
+                }
+                oP.innerText = aText[a + 1]
+            }
+        }
+    </script>
+</body>
+
+</html>

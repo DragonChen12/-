@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言提交</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+        }
+        textarea {
+            display: block;
+            width: 100%;
+            height: 200px;
+        }
+        .btn {
+            float: right;
+            margin: 5px 0;
+        }
+        .List {
+            padding: 0;
+            width: 100%;
+            margin-top: 30px;
+        }
+        ul>li {
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px dotted #777;
+            list-style: none;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea  id="text"></textarea>
+        <button class='btn'>提交</button>
+        <ul class='List'></ul>
+    </div>
+    <script>
+        var oText = document.querySelector('#text')
+        var oBtn = document.querySelector('.btn')
+        var oList = document.querySelector('.List')
+        console.log(oText)
+        oBtn.onclick = function () {
+            var value = oText.value
+            oText.value = ''
+            var div = document.createElement('li')
+            div.innerText = value
+            oList.appendChild(div)
+        }
+    </script>
+</body>
+</html>
